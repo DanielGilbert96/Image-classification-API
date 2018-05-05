@@ -41,7 +41,7 @@ tf.app.flags.DEFINE_string(
   """Path to retrained_graph.pb, """
   """retrained_labels.txt""")
 
-tf.app.flags.DEFINE_integer('num_top_predictions', 3,
+tf.app.flags.DEFINE_integer('num_top_predictions', 1,
                             """Display this many predictions.""")
 
 # Classificaiton endpoint
