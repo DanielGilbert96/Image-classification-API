@@ -124,7 +124,9 @@ def run_inference_on_image(image_data):
     Nothing
   """
 
-  sess = tf.Session()
+  config = tf.ConfigProto()
+  config.gpu_options.allow_growth = True
+  session = tf.Session(config=config)
   print("Tensorflow session ready")
   node_lookup = NodeLookup()
   print("Node lookup loaded")
@@ -149,8 +151,9 @@ if __name__ == '__main__':
 
   node_lookup = NodeLookup()
   print("Node lookup loaded")
-
-  sess = tf.Session()
+  config = tf.ConfigProto()
+  config.gpu_options.allow_growth = True
+  session = tf.Session(config=config)
   print("Tensorflow session ready")
 
   print("Launching web application...")
