@@ -123,8 +123,8 @@ def run_inference_on_image(image_data):
   Returns:
     Nothing
   """
-  config = tf.ConfigProto(device_count = {'GPU': 0})
-  sess = tf.Session(config=config)
+
+  sess = tf.Session()
   print("Tensorflow session ready")
   node_lookup = NodeLookup()
   print("Node lookup loaded")
@@ -150,8 +150,7 @@ if __name__ == '__main__':
   node_lookup = NodeLookup()
   print("Node lookup loaded")
 
-  config = tf.ConfigProto(device_count = {'GPU': 0})
-  sess = tf.Session(config=config)
+  sess = tf.Session()
   print("Tensorflow session ready")
 
   print("Launching web application...")
