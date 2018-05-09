@@ -15,7 +15,6 @@ import tensorflow as tf
 from flask import Flask, jsonify
 from flask import make_response
 from flask import request, render_template
-from flask_bootstrap import Bootstrap
 
 
 
@@ -24,7 +23,6 @@ from werkzeug import secure_filename
 
 
 app = Flask(__name__)
-bootstrap = Bootstrap(app)
 
 
 @app.route('/')
@@ -37,7 +35,7 @@ FLAGS = tf.app.flags.FLAGS
 
 # define directory that the model is stored in (default is the current directory)
 tf.app.flags.DEFINE_string(
-  'model_dir', './',
+  'model_dir', '/home/ubuntu/flaskapp',
   """Path to retrained_graph.pb, """
   """retrained_labels.txt""")
 
@@ -126,7 +124,7 @@ def run_inference_on_image(image_data):
 
   config = tf.ConfigProto()
   config.gpu_options.allow_growth = True
-  session = tf.Session(config=config)
+  sess = tf.Session(config=config)
   print("Tensorflow session ready")
   node_lookup = NodeLookup()
   print("Node lookup loaded")
@@ -153,7 +151,7 @@ if __name__ == '__main__':
   print("Node lookup loaded")
   config = tf.ConfigProto()
   config.gpu_options.allow_growth = True
-  session = tf.Session(config=config)
+  sess = tf.Session(config=config)
   print("Tensorflow session ready")
 
   print("Launching web application...")
